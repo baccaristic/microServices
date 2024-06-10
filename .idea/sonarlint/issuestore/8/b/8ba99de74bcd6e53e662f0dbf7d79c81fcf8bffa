@@ -1,0 +1,4 @@
+
+Ω
+java:S1598"ΒThis file "ModelMapperConfig.java" should be located in "io\microServices\tickets\config" directory, not in "C:\microservice\microservices\ms-tickets\src\main\java\io\salesafari\tickets\config".(φυ£»
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(φυ£»

@@ -1,0 +1,18 @@
+
+U
+java:S1118":Add a private constructor to hide the implicit public one.(Ãö˜ªúÿÿÿÿ
+b
+java:S1128"GRemove this unused import 'io.salesafari.tickets.config.SpringContext'.(×ü©šþÿÿÿÿ
+Y
+java:S1128"CRemove this unused import 'io.salesafari.tickets.entities.Comment'.(æÕßÿ
+]
+java:S1128"BRemove this unused import 'io.salesafari.tickets.entities.Ticket'.(¾¨ÂËþÿÿÿÿ
+g
+java:S1128"QRemove this unused import 'io.salesafari.tickets.repositories.CommentRepository'.(Ç­ž»
+W
+java:S1128"<Remove this unused import 'jakarta.persistence.PostPersist'.(¾¼­‚ÿÿÿÿÿ
+e
+java:S1128	"ORemove this unused import 'org.springframework.beans.factory.annotation.Value'.(ìø›
+`
+java:S1128
+"ERemove this unused import 'org.springframework.stereotype.Component'.(Þ÷Ñ¸ÿÿÿÿÿ
