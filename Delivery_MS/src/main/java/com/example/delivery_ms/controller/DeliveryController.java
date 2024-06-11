@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600,allowCredentials = "true")
+@CrossOrigin(origins = "http://192.168.96.1:3000", maxAge = 3600,allowCredentials = "true")
 @RestController
 @RequestMapping("/deliveries")
 public class DeliveryController {

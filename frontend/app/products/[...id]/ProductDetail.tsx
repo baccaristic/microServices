@@ -21,7 +21,7 @@ const ProductDetail = () => {
   useEffect(() => {
     if (id) {
       // Fetch the product details based on the ID
-      fetch(`http://localhost:8082/products/${id}`)
+      fetch(`http://192.168.96.1:8082/products/${id}`)
         .then((response) => response.json())
         .then((data: Product) => setProduct(data)); // Type assertion here
     }

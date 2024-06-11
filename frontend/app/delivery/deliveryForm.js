@@ -15,14 +15,14 @@ const DeliveryForm = () => {
   const [orderId, setOrderId] = useState(0);
   const [delivered, setDelivered] = useState(false);
   const [deliveryMan, setDeliveryMan] = useState('');
-  const { data } = useSession();
+  const { data: session, status } = useSession();
   const [deliveries, setDeliveries] = useState([]);
   const [couriers, setCouriers] = useState([]);
   const [courierId, setCourierId] = useState('');
 
   const fetchCouriers = async () => {
     try {
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_DELIVERY_API_URL}/couriers` , { headers: { 'Authorization': `Bearer ${data.access_token}` } } );
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_DELIVERY_API_URL}/couriers` , { headers: { 'Authorization': `Bearer ${session['access_token']}` } } );
       setCouriers(response.data);
     } catch (error) {
       console.error('Error fetching couriers:', error);
@@ -31,9 +31,9 @@ const DeliveryForm = () => {
 
   const fetchUserDeliveries = async () => {
     try {
-      const apiUrl = `${process.env.NEXT_PUBLIC_DELIVERY_API_URL}/deliveries/byName/${data?.user.name}`;
+      const apiUrl = `${process.env.NEXT_PUBLIC_DELIVERY_API_URL}/deliveries/byName/${session?.user.name}`;
       const headers = {
-        'Authorization': `Bearer ${data.access_token}`,
+        'Authorization': `Bearer ${session['access_token']}`,
       };
       const response = await axios.get(apiUrl , { headers });
       setDeliveries(response.data);
@@ -46,7 +46,7 @@ const DeliveryForm = () => {
     e.preventDefault();
 
     const formData = {
-      recipientname: data?.user.name,
+      recipientname: session?.user.name,
       deliveryAddress,
       deliveryCost,
       order_id: orderId, // Change the field name to "order_id"
@@ -60,7 +60,7 @@ const DeliveryForm = () => {
       const apiUrl = `${process.env.NEXT_PUBLIC_DELIVERY_API_URL}/deliveries`;
 
       const headers = {
-        'Authorization': `Bearer ${data.access_token}`,
+        'Authorization': `Bearer ${session['access_token']}`,
         'Content-Type': 'application/json',
       };
       const response = await axios.post(apiUrl, formData, { headers });
@@ -74,7 +74,7 @@ const DeliveryForm = () => {
 
   const markAsDelivered = async (deliveryId) => {
     try {
-      await axios.put(`${process.env.NEXT_PUBLIC_DELIVERY_API_URL}/deliveries/${deliveryId}/markAsDelivered` , { headers: { 'Authorization': `Bearer ${data.access_token}` } });
+      await axios.put(`${process.env.NEXT_PUBLIC_DELIVERY_API_URL}/deliveries/${deliveryId}/markAsDelivered`, {} , { headers: { 'Authorization': `Bearer ${session['access_token']}` } });
       setDelivered(true);
     } catch (error) {
       console.error('Error marking delivery as delivered:', error);
@@ -86,7 +86,7 @@ const DeliveryForm = () => {
     try {
       const apiUrl = `${process.env.NEXT_PUBLIC_DELIVERY_API_URL}/deliveries/${deliveryId}`;
       const headers = {
-        'Authorization': `Bearer ${data.access_token}`,
+        'Authorization': `Bearer ${session['access_token']}`,
       };
       await axios.delete(apiUrl, { headers });
     } catch (error) {
@@ -96,10 +96,10 @@ const DeliveryForm = () => {
   };
   useEffect(() => {
     const fetchData = async () => {
-      if (data?.user.name) {
-        const apiUrl = `${process.env.NEXT_PUBLIC_DELIVERY_API_URL}/deliveries/byName/${data?.user.name}`;
+      if (session?.user.name) {
+        const apiUrl = `${process.env.NEXT_PUBLIC_DELIVERY_API_URL}/deliveries/byName/${session?.user.name}`;
         try {
-          const response = await axios.get(apiUrl , { headers: { 'Authorization': `Bearer ${data.access_token}` } });
+          const response = await axios.get(apiUrl , { headers: { 'Authorization': `Bearer ${session['access_token']}` } });
           console.log('Deliveries fetched successfully:', response.data);
           setDeliveries(response.data);
         } catch (error) {
@@ -110,7 +110,7 @@ const DeliveryForm = () => {
 
     fetchData();
     fetchCouriers();
-  }, [data?.user.name]);
+  }, [session?.user.name]);
 
   const showDeleteConfirmation = (deliveryId) => {
     Swal.fire({
@@ -155,7 +155,7 @@ const DeliveryForm = () => {
           label="Recipient Name"
           type="text"
           value={recipientname}
-          placeholder={data?.user.name}
+          placeholder={session?.user.name}
           onChange={(e) => setRecipientName(e.target.value)}
           className="mb-3"
           disabled

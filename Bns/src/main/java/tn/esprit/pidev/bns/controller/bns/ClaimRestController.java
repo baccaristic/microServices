@@ -29,7 +29,7 @@ public class ClaimRestController {
     @Autowired
     private ClaimRepository claimRepository;
 
-    //http://localhost:9000/bns/claim/create-claim
+    //http://192.168.96.1:9000/bns/claim/create-claim
     @PostMapping("/create-claim")
     public ResponseEntity<Claim> createClaim(@RequestBody Claim claim) {
         try {
@@ -59,7 +59,7 @@ public class ClaimRestController {
 
 
 
-    //http://localhost:9000/bns/claim/addclaim
+    //http://192.168.96.1:9000/bns/claim/addclaim
     @PostMapping("/addclaim")
     @ResponseBody
     public ResponseEntity<ByteArrayResource> createClaim(Claim c , @RequestParam("img")MultipartFile file) throws IOException, WriterException {
@@ -67,7 +67,7 @@ public class ClaimRestController {
     }
 
     //define a method to download files
-    //http://localhost:9000/bns/claim/download/{filename}
+    //http://192.168.96.1:9000/bns/claim/download/{filename}
     @GetMapping("/download/{filename}")
     public ResponseEntity<Resource> downloadFiles (@PathVariable("filename") String filename) throws IOException {
         return  claimService.downloadFiles(filename);
@@ -75,32 +75,32 @@ public class ClaimRestController {
 
 
 
-    //http://localhost:9000/bns/claim/retrieve-all-claims
+    //http://192.168.96.1:9000/bns/claim/retrieve-all-claims
     @GetMapping("/retrieve-all-claims")
     public List<Claim> getAllClaims() {
         List<Claim> listClaims = claimService.getAllClaims();
         return listClaims;
     }
 
-    //http://localhost:9000/bns/claim/retrieve-claim/id
+    //http://192.168.96.1:9000/bns/claim/retrieve-claim/id
     @GetMapping("/retrieve-claim/{idClaim}")
     public Claim retrieveClaim(@PathVariable("idClaim") Integer idClaim) {
         return claimService.retrieveClaim(idClaim);
     }
 
-    //http://localhost:9000/bns/claim/traiterClaim/id
+    //http://192.168.96.1:9000/bns/claim/traiterClaim/id
     @GetMapping("/traiterClaim/{idClaim}")
     public Claim traiterClaim(@PathVariable("idClaim") Integer idClaim) {
         return claimService.traiterClaim(idClaim);
     }
 
-    //http://localhost:9000/bns/claim/getClaimsByEtat/1 or 0
+    //http://192.168.96.1:9000/bns/claim/getClaimsByEtat/1 or 0
     @GetMapping("/getClaimsByEtat/{treated}")
     public List<Claim> getClaimsByEtat(@PathVariable("treated") boolean treated) {
         return claimService.getClaimsByEtat(treated);
     }
 
-    //http://localhost:9000/bns/claim/ByCreationDate?debut=2023-03-05&fin=2023-03-06
+    //http://192.168.96.1:9000/bns/claim/ByCreationDate?debut=2023-03-05&fin=2023-03-06
     @GetMapping("/ByCreationDate")
     public List<Claim> getClaimsByCreationDate(@RequestParam ("debut")  @DateTimeFormat(pattern = "yyyy-MM-dd") Date debut,
                                           @RequestParam ("fin") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fin) {
@@ -109,7 +109,7 @@ public class ClaimRestController {
         return claims;
     }
 
-    //http://localhost:9000/bns/claim/ByProcessingDate?debut=2023-03-05&fin=2023-03-06
+    //http://192.168.96.1:9000/bns/claim/ByProcessingDate?debut=2023-03-05&fin=2023-03-06
     @GetMapping("/ByProcessingDate")
     public List<Claim> getClaimsByProcessingDate(@PathVariable ("debut") @DateTimeFormat(pattern = "yyyy-MM-dd") Date debut,
                                           @PathVariable ("fin") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fin) {
@@ -118,7 +118,7 @@ public class ClaimRestController {
     }
 
 
-    //http://localhost:9000/bns/claim/remove-claim/1
+    //http://192.168.96.1:9000/bns/claim/remove-claim/1
     @DeleteMapping("/remove-claim/{idClaim}")
     public void deleteClaim (@PathVariable("idClaim") Integer idClaim) {
         claimService.deleteClaim(idClaim);

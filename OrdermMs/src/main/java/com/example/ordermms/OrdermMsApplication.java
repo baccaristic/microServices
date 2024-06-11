@@ -19,7 +19,7 @@ public class OrdermMsApplication {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins("http://localhost:3000/**");
+                registry.addMapping("/**").allowedOrigins("http://192.168.96.1:3000/**");
             }
         };
     }

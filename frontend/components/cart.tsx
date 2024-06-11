@@ -48,7 +48,7 @@ export default function CartModal() {
         {
           headers: {
             'Content-Type': 'application/json',
-            Authorization: 'Bearer ' + session?.user?.accessToken
+            Authorization: 'Bearer ' + session?.access_token
           }
         }
       );
@@ -71,27 +71,23 @@ export default function CartModal() {
     address: 'El Ghazela',
     payment: 'Credit Card'
   };
-  const { mutate: createOrder } = useMutation({
-    mutationKey: ['createOrder'],
-
-    mutationFn: async () => {
+  const createOrder = async () => {
+    try {
       await axios.post(
-        `${process.env.NEXT_PUBLIC_ORDER_API_URL}/order/createOrder`,
-        newOrder,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: 'Bearer ' + session?.access_token
+          `${process.env.NEXT_PUBLIC_ORDER_API_URL}/order/createOrder`,
+          newOrder,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: 'Bearer ' + session?.access_token
+            }
           }
-        }
       );
-    },
-    onSuccess: () => {
-      // navigate to /orders
-      const router = useRouter();
-      router.push('/orders');
+    } catch (error) {
+      // Handle error
+      console.error('Error creating order:', error);
     }
-  });
+  };
 
   const sizes = [
     'xs',
@@ -109,6 +105,12 @@ export default function CartModal() {
   const handleOpen = () => {
     setSize('md');
     onOpen();
+  };
+
+  // @ts-ignore
+  const handleCheckout = (event) => {
+    event.preventDefault();
+    createOrder();
   };
 
   return (
@@ -178,15 +180,7 @@ export default function CartModal() {
                       <div className="mt-6">
                         <a
                           className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-                          onClick={(
-                            event: React.MouseEvent<
-                              HTMLAnchorElement,
-                              MouseEvent
-                            >
-                          ) => {
-                            event.preventDefault();
-                            createOrder();
-                          }}
+                          onClick={handleCheckout}
                         >
                           Checkout
                         </a>

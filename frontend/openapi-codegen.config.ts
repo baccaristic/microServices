@@ -7,7 +7,7 @@ export default defineConfig({
   dark: {
     from: {
       source: 'url',
-      url: 'http://localhost:8089/v3/api-docs'
+      url: 'http://192.168.96.1:8089/v3/api-docs'
     },
     outputDir: './api',
     to: async (context) => {
@@ -24,7 +24,7 @@ export default defineConfig({
   tickets: {
     from: {
       source: 'url',
-      url: 'http://localhost:8089/v3/api-docs'
+      url: 'http://192.168.96.1:8089/v3/api-docs'
     },
     outputDir: './app/tickets/_api',
     to: async (context) => {

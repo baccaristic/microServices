@@ -11,7 +11,7 @@ import java.net.URL;
 public class TicketEntityListener {
     @SneakyThrows
     public static String callRemoteEndpoint(String testValue) {
-        URL url = new URL("http://localhost:4747/openai/answer");
+        URL url = new URL("http://192.168.96.1:4747/openai/answer");
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("POST");
         conn.setRequestProperty("Content-Type", "application/json");

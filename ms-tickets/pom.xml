@@ -11,8 +11,8 @@
     <groupId>io.microServices</groupId>
     <artifactId>tickets</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>ms-</name>
-    <description>ms-</description>
+    <name>ms-tickets</name>
+    <description>ms-tickets</description>
     <properties>
         <java.version>17</java.version>
         <spring-cloud.version>2022.0.4</spring-cloud.version>

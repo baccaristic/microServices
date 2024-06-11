@@ -1,0 +1,15 @@
+C:\microservice\microservices\Bns\src\main\java\tn\esprit\pidev\bns\controller\bns\ClaimRestController.java
+C:\microservice\microservices\Bns\src\main\java\tn\esprit\pidev\bns\entity\bns\Claim.java
+C:\microservice\microservices\Bns\src\main\java\tn\esprit\pidev\bns\BnsApplication.java
+C:\microservice\microservices\Bns\src\main\java\tn\esprit\pidev\bns\service\bns\OfferServiceImpl.java
+C:\microservice\microservices\Bns\src\main\java\tn\esprit\pidev\bns\entity\bns\SMS.java
+C:\microservice\microservices\Bns\src\main\java\tn\esprit\pidev\bns\serviceInterface\bns\IClaimService.java
+C:\microservice\microservices\Bns\src\main\java\tn\esprit\pidev\bns\service\bns\ClaimServiceImpl.java
+C:\microservice\microservices\Bns\src\main\java\tn\esprit\pidev\bns\entity\bns\BadWord.java
+C:\microservice\microservices\Bns\src\main\java\tn\esprit\pidev\bns\controller\bns\OfferRestController.java
+C:\microservice\microservices\Bns\src\main\java\tn\esprit\pidev\bns\entity\bns\Offer.java
+C:\microservice\microservices\Bns\src\main\java\tn\esprit\pidev\bns\repository\bns\ClaimRepository.java
+C:\microservice\microservices\Bns\src\main\java\tn\esprit\pidev\bns\serviceInterface\bns\IOfferService.java
+C:\microservice\microservices\Bns\src\main\java\tn\esprit\pidev\bns\entity\bns\BusinessType.java
+C:\microservice\microservices\Bns\src\main\java\tn\esprit\pidev\bns\repository\bns\OfferRepository.java
+C:\microservice\microservices\Bns\src\main\java\tn\esprit\pidev\bns\entity\bns\ClaimSubject.java

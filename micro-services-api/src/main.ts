@@ -24,7 +24,7 @@ function initSwagger(app: NestExpressApplication) {
     new ConsoleLogger('startup').log('Swagger enabled');
     const config = new DocumentBuilder()
       .setTitle('micro-services-api')
-      .addServer('http://localhost:4747', 'Local server')
+      .addServer('http://192.168.96.1:4747', 'Local server')
       .setDescription('microServices description')
       .setVersion('1.0')
       .addBearerAuth({

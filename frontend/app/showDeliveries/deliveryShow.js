@@ -14,7 +14,7 @@ const DeliveryShow = () => {
 
     const markAsDelivered = async (deliveryId) => {
         try {
-          await axios.put(`${process.env.NEXT_PUBLIC_DELIVERY_API_URL}/deliveries/${deliveryId}/markAsDelivered` , { headers: { 'Authorization': `Bearer ${data.access_token}` } });
+          await axios.put(`${process.env.NEXT_PUBLIC_DELIVERY_API_URL}/deliveries/${deliveryId}/markAsDelivered` , {}, { headers: { 'Authorization': `Bearer ${data.access_token}` } });
           fetchUserDeliveries();
         } catch (error) {
           console.error('Error marking delivery as delivered:', error);

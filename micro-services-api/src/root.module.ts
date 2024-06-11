@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { MongooseModule, MongooseModuleFactoryOptions } from '@nestjs/mongoose';
 import { EurekaModule } from 'nestjs-eureka';
 import { OpenAIModule } from '@platohq/nestjs-openai';
 import { AutomatedResponseModule } from './modules/openai/automated-response-module';
@@ -33,17 +32,6 @@ import { AutomatedResponseModule } from './modules/openai/automated-response-mod
             host: 'localhost',
           },
         };
-      },
-    }),
-    MongooseModule.forRootAsync({
-      inject: [ConfigService],
-      useFactory: (configService: ConfigService) => {
-        return {
-          uri:
-            configService.get<string>('MONGO_URI') ??
-            `mongodb://localhost:27017/nest`,
-          autoIndex: true,
-        } as MongooseModuleFactoryOptions;
       },
     }),
     AutomatedResponseModule,
